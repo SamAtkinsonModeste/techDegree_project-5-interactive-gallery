@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+* {
+   box-sizing: border-box;
+  
+	
+	}
+
+
+
+body {
+	   
+	   font: normal 1em/1.6 'Lato', sans-serif;
+	   background: #000;
+	   color: #F30CBF;
+}
+
+	   
+
+
+
+
+img {
+ max-width : 100%;
+
+}
+
+
+
+p {
+	
+	margin-bottom: 1.8em;
+	
+}
+
+
+img,
+p {
+   padding: 0 1em;	
+   font-weight: bold;
+   font-family: 'Arima Madurai', sans-serif, cursive;
+}
+
+
+
+
+h1,
+h2,
+h3 {
+   margin: 0;
+}
+
+
+
+.cherry {
+	font-family:'Cherry Swash',  cursive;
+
+} 
+
+
+
+
+
+.elsie {
+	font-family: 'Elsie', cursive;
+
+
+} 
+
+
+
+
+
+
+
+
+
+a {
+	
+   text-decoration: none;
+   	display: block;
+}
+
+.gallery,
+.main-header h1{
+	width: 90%;
+	margin: 0 auto;
+}
