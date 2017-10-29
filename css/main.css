@@ -12,13 +12,16 @@
 
 body {
 	   
-	   font: normal 1em/1.6 'Lato', sans-serif;
+	   font: normal 1em/1.5 sans-serif;
 	   background: #000;
 	   background-image: url("../img/brickwall.png");
 	   color: #F30CBF;
 }
 
 	   
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 
@@ -30,11 +33,11 @@ img {
 
 
 
-p {
+/*p {
 	
 	margin-bottom: 1.8em;
 	
-}
+}*/
 
 
 img,
@@ -55,7 +58,15 @@ h3 {
 }
 
 
+.main-header h1 {
+	text-align: center;
+	font-size: 1.8em;
+	padding: 15px 0;
+}
 
+
+
+/* Header h1 font*/
 .cherry {
 	font-family:'Cherry Swash',  cursive;
 
@@ -64,7 +75,7 @@ h3 {
 
 
 
-
+/*Font for the captions*/
 .elsie {
 	font-family: 'Elsie', cursive;
 
@@ -89,9 +100,13 @@ a {
 .main-header h1{
 	width: 90%;
 	margin: 0 auto;
+	box-shadow: inset 0 0 33px 1px rgba(0,0,0, 1); 
 	border: #0f0 1px solid;
 }
 
+.gallery {
+	box-shadow: inset 0 0 50px 3px rgba(0,0,0, 1);
+}
 
 
 .clip {
