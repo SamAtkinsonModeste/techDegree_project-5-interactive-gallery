@@ -57,9 +57,9 @@ img {
 	width: 90%;
 	display: block;
 	margin: 0 auto;
-	padding: 8px;
+	padding: 10px;
 	border-style: none;
-	border-radius: 5px;
+	border-radius: 8px;
 	-webkit-box-shadow: 0 10px 15px #777;
   -moz-box-shadow: 0 10px 15px #777;
   box-shadow: 0 3px 9px #777;
@@ -190,11 +190,7 @@ MEDIA QUERIES
 		flex-wrap: wrap;
 	}
 	
-	.felexSearch-container{
-		
-		flex-wrap: nowrap;
-		justify-content:flex-end;
-	}
+	
 	
 	.img-item{
 		flex:1 50%;
@@ -202,7 +198,7 @@ MEDIA QUERIES
 	
 	#myImages {
 		
-		width: 300px;
+		width: 500px;
 	}
 	
 	
@@ -245,6 +241,12 @@ MEDIA QUERIES
 	padding: 10px 0 25px;
 	
 }
+	
+	
+	#myImages {
+		
+		width: 500px;
+	}
 	
 	
 	
