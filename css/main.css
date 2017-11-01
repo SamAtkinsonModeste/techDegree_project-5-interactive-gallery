@@ -172,7 +172,15 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV)
 	border: #00f 1px solid;
 }
 
+/*******************************************************************
+STYLES FOR NANOGALLERY PLUGIN
+********************************************************************/
 
+.nanogallery_theme_default #nanoGalleryViewer .closeButtonFloating:after {
+    
+    padding: 5px 2px 5px 5px;
+    
+}
 
 .nanogallery_theme_default #nanoGalleryViewer .toolbar {
     
@@ -237,6 +245,22 @@ MEDIA QUERIES
 	border: 3px solid #000;
 	box-shadow: inset 0 0 60px 10px rgba(0,0,0, 1);
 }
+	
+/*******************************************************************
+STYLES FOR NANOGALLERY PLUGIN
+********************************************************************/
+	
+	.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .description {
+    font-size: .9em;
+	
+}
+
+
+.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .title {
+    font-size: 1em;
+	
+}
+
 
 	
 }
@@ -246,7 +270,7 @@ MEDIA QUERIES
 	
 	
 	.gallery {
-		max-width: 60%;
+		max-width: 50%;
 		margin-bottom: 30px;
 		padding: 60px 35px;
 	}
@@ -268,6 +292,29 @@ MEDIA QUERIES
 		
 		width: 500px;
 	}
+
+	
+/*******************************************************************
+STYLES FOR NANOGALLERY PLUGIN
+********************************************************************/
+	
+	#nanoGalleryViewer .closeButtonFloating:after {
+    
+    padding: 5px 10px 5px 5px;
+    
+}
+	
+	.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .description {
+    font-size: 1em;
+	
+}
+
+
+.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .title {
+    font-size: 2em;
+	
+}
+
 	
 	
 	
