@@ -58,9 +58,10 @@
 	<script type="text/javascript" src="js/nanoGALLERY-5.10.3/dist/jquery.nanogallery.min.js"></script>
 	<script>
 		jQuery("#myNanoGallery").nanoGallery(
-			{thumbnailWidth:160,thumbnailHeight:160,
+			{thumbnailWidth:200,thumbnailHeight:200,
 			 itemsBaseURL:'img',
-			 thumbnailHoverEffect:[{'name':'scaleLabelOverImage','duration':300},{'name':'borderLighter'}],				
+			 thumbnailHoverEffect:[{'name':'scaleLabelOverImage', 'name': 'rotateCornerBL',  'duration':400, easing: 'swing', easingBack: 'swing' },{'name':'borderLighter'}],	
+			 /*thumbnailHoverEffect: [{ name: 'slideUp', duration: 400, durationBack: 200, easing: 'swing', easingBack: 'swing' }],*/
 			 colorScheme:'clean',
              locationHash: false,
 			 thumbnailLabel:{display:true,position:'overImageOnTop', align:'center'},

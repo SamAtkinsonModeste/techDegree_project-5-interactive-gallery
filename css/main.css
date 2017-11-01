@@ -144,7 +144,7 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV)
 .main-header h1{
 	width: 90%;
 	margin: 0 auto;
-	border: #0f0 3px solid;
+	/*border: #0f0 3px solid;*/
 	
 }
 
