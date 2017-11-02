@@ -56,14 +56,29 @@
 	
 	 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/nanoGALLERY-5.10.3/dist/jquery.nanogallery.min.js"></script>
+	
 	<script>
+		
+		
+			
 		jQuery("#myNanoGallery").nanoGallery(
 			{thumbnailWidth:200,thumbnailHeight:200,
 			 itemsBaseURL:'img',
-			 thumbnailHoverEffect:[{'name':'scaleLabelOverImage', 'name': 'rotateCornerBL',  'duration':400, easing: 'swing', easingBack: 'swing' },{'name':'borderLighter'}],	thumbnailGutterWidth: 10,
-			   thumbnailGutterHeight: 10,
+			 thumbnailHoverEffect:
+			 /*[{ name: 'slideUp', duration: 400, durationBack: 200, easing: 'swing' },
+                  { name: 'borderLighter', duration: 300, durationBack: 200, delay: 200 }],*/
+          
+				[{'name':'scaleLabelOverImage',
+				  'name': 'rotateCornerBL',
+				  'duration':400, 
+				  easing: 'swing',
+				  easingBack: 'swing' },
+				 ],
+
+				thumbnailGutterWidth: 10,
+				thumbnailGutterHeight: 10,
 			 /*thumbnailHoverEffect: [{ name: 'slideUp', duration: 400, durationBack: 200, easing: 'swing', easingBack: 'swing' }],*/
-			 colorScheme:'clean',
+			 colorScheme: 'default',
              locationHash: false,
 			 thumbnailLabel:{display:true,position:'overImageOnTop', align:'center'},
              viewerDisplayLogo:false

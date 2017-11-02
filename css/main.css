@@ -54,7 +54,7 @@ img {
 
 /*search box*/
 #myImages {
-	width: 90%;
+	width: 320px;
 	display: block;
 	margin: 0 auto;
 	padding: 10px;
@@ -69,7 +69,18 @@ img {
 }
 
 
-#myImages 
+
+#myImages:active{
+	box-shadow: inset 0 0 3px 2px rgba(000,000,000, 0.3);
+    border: 2px solid #000;
+	outline:none;
+} 
+
+#myImages:focus{
+	box-shadow: inset 0 0 3px 2px rgba(000,000,000, 0.8);
+    border: 2px solid #c0c0c0;
+	outline:none;
+} 
 
 /*Div containers for thumb nail images*/
 .thumb-nails,
@@ -142,13 +153,14 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV)
 
 .gallery,
 .main-header h1{
-	width: 90%;
+	
 	margin: 0 auto;
 	/*border: #0f0 3px solid;*/
 	
 }
 
 .main-header h1 {
+	width: 90%;
 	text-align: center;
 	font-size: 2em;
 	padding: 10px 0 25px;
@@ -159,6 +171,7 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV)
 }
 
 .gallery {
+	max-width: 300px;
 	margin-bottom: 20px;
 	padding: 10px 0;
 	border: 2px solid #000;
@@ -175,6 +188,14 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV)
 /*******************************************************************
 STYLES FOR NANOGALLERY PLUGIN
 ********************************************************************/
+
+
+
+
+
+
+	
+
 
 .nanogallery_theme_default #nanoGalleryViewer .closeButtonFloating:after {
     
@@ -239,7 +260,7 @@ MEDIA QUERIES
 	
 	
 	.gallery {
-	max-width: 70%;
+	max-width: 700px;
 	margin-bottom: 25px;
 	padding: 50px 25px;
 	border: 3px solid #000;
@@ -270,7 +291,7 @@ STYLES FOR NANOGALLERY PLUGIN
 	
 	
 	.gallery {
-		max-width: 50%;
+		max-width: 1000px;
 		margin-bottom: 30px;
 		padding: 60px 35px;
 	}
@@ -290,7 +311,7 @@ STYLES FOR NANOGALLERY PLUGIN
 	
 	#myImages {
 		
-		width: 500px;
+		width: 700px;
 	}
 
 	
