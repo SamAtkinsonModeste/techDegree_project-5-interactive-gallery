@@ -250,7 +250,9 @@ NON NANO GALLERY DIV
 STYLES FOR NANOGALLERY PLUGIN
 ********************************************************************/
 	
-
+#myNanoGallery {
+	display: none;
+}
 
 .nanogallery_theme_default .nanoGalleryContainer .nanoGalleryThumbnailContainer{
 	-webkit-box-shadow: 0 20px 25px #777;
