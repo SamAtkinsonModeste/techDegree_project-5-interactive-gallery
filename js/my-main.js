@@ -1,6 +1,26 @@
 // JavaScript Document
 
-jQuery("#myNanoGallery").show();
+
+//shows Nano gallery when js is not disabled
+jQuery("#myNanoGallery").fadeIn(1800);
+
+//search functionality
+//simple get the input to console
+
+var imageCap =$("a").attr("title");
+
+
+jQuery("#myImages").on("keyup", function(){
+	var titleImg=$(this).val().toLowerCase();
+    var imageCap =$("a").attr("title");
+	
+	
+	console.log(titleImg);
+	
+
+
+	
+});
 
 
 jQuery("#myNanoGallery").nanoGallery(
