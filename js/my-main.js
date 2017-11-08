@@ -1,29 +1,40 @@
 // JavaScript Document
 
 
-//shows Nano gallery when js is not disabled
-jQuery("#myNanoGallery").fadeIn(1800);
+
+//shows Search Box and Nano gallery when js is not disabled
+$("#search").fadeIn(1400);
+$("#myNanoGallery").fadeIn(1800);
+
 
 //search functionality
 //simple get the input to console
 
-var imageCap =$("a").attr("title");
+/*console.log($("a").attr("title"));*/
 
+/*var $imageContainer= $("a").attr("title");*/
+/*$( "[title]" ).each(function( index ) {
+  console.log( index + ": " + $( this ).text() );
+});*/
 
-jQuery("#myImages").on("keyup", function(){
-	var titleImg=$(this).val().toLowerCase();
-    var imageCap =$("a").attr("title");
+//1.Capture input value and convert to lower case
+$("#searchImgs").on("keyup", function(){ 
+	var $titleImg=$(this).val().toLowerCase();
+	//2.Need to check each A with attribute title
+	    console.log($titleImg);
+	});
+
+   			   
+
+											
 	
 	
-	console.log(titleImg);
+	/*console.log(titleImg);
 	
+});*/
 
 
-	
-});
-
-
-jQuery("#myNanoGallery").nanoGallery(
+$("#myNanoGallery").nanoGallery(
 			{thumbnailWidth:200,thumbnailHeight:200,
 			 itemsBaseURL:'img',
 			 thumbnailHoverEffect:
