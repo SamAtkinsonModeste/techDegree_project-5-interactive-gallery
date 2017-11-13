@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Untitled Document</title>
+</head>
+
+<body>
+	<ul>
+		<li>Hello</li>
+		<li>World</li>
+		<li>Day</li>
+	</ul>
+	Search:
+	<input type="text" id="searchText">
+	
+	<script>
+		function contains(text_one, text_two) {
+	if(text_one.indexOf(text_two) != -1)
+		return true;
+	
+}
+
+
+$("#searchText").keyup(function () {
+	var searchText = $("#searchText").val().toLowerCase();
+	$("ul li").each(function (){
+		if(!contains($(this).text().toLowerCase(), searchText))
+		$(this).hide();
+		 else 
+		 $(this).show();
+	   
+	});
+	
+});
+
+	</script>
+</body>
+</html>

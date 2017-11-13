@@ -6,7 +6,7 @@
 	<title>Interactive Photo Gallery</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Cherry+Swash|Elsie" rel="stylesheet">
-	<link href="js/nanoGALLERY-5.10.3/dist/css/nanogallery.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="js/dist/fancybox-master/dist/jquery.fancybox.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -18,13 +18,20 @@
 		</header>
 		   <div id="search" class="felexSearch-container">
 			  
-			   <input type="text" id="myImageSearch" placeholder="Search images:" class="elsie text-images"/>
+			   <input type="text" id="searchImgs" placeholder="Search images:" class="elsie text-images"/>
 			  
 		   </div>
+		
+		
+		
 	
-				<br><br><h2>Sample #2: HREF attributes</h2>
-	<div id="nanoGallery2" class="gallery">
-		<a href="01.jpg" data-ngthumb="01t.jpg" data-ngdesc="Hay Bales
+				
+	<div id="myFancyBox" class="gallery">
+		<ul id="imageContainer">
+		<li>
+			<a href="img/01.jpg" data-fancybox data-caption="I love hay bales. Took this snap on a drive through the countryside past some straw fields."
+			
+		</li><a href="01.jpg" data-ngthumb="01t.jpg" data-ngdesc="Hay Bales
 I love hay bales. Took this snap on a drive through the countryside past some straw fields.">Hay Bales</a>
 		<a href="02.jpg" data-ngthumb="02t.jpg" data-ngdesc="
 The lake was so calm today. We had a great view of the snow on the mountains from here.">Lake</a>
@@ -33,14 +40,24 @@ I hiked to the top of the mountain and got this picture of the canyon and trees 
 		<a href="04.jpg" data-ngthumb="04t.jpg"  data-ngdesc="Iceberg
 It was amazing to see an iceberg up close, it was so cold but didn’t snow today. ">Iceberg</a><a href="05.jpg" data-ngthumb="05t.jpg"  data-ngdesc="Canyon
 I hiked to the top of the mountain and got this picture of the canyon and trees below.">Canyon</a>
+			</ul>
 	</div>
 
 		</section>
 	
 	
-	 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/nanoGALLERY-5.10.3/dist/jquery.nanogallery.min.js"></script>
+	 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/fancybox-master/dist/jquery.fancybox.min.js"></script>
+	
+	
 	<script>
+		$("#search").fadeIn(1400);
+		$("#myNanoGallery").fadeIn(1800);
+		
+		
+
+		
+		
 		jQuery("#nanoGallery2").nanoGallery(
 			{thumbnailWidth:200,thumbnailHeight:200,
 			 itemsBaseURL:'img',
@@ -54,6 +71,8 @@ I hiked to the top of the mountain and got this picture of the canyon and trees 
 			});
 
 	
+		
+		
 	</script>
 </body>
 </html>
