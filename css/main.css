@@ -46,15 +46,15 @@ img {
 /*FONT FOR THE IMAGE CAPTIONS*/
 
 figcaption,
-.nanogallery_colorscheme_default .nanoGalleryContainer > .nanoGalleryThumbnailContainer .labelImage,
-.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .description {
+ p {
 	font-family: 'Arima Madurai', sans-serif, cursive;
 }
 
 
 #searchImgs,
 figcaption h1,
-.nanogallery_theme_default #nanoGalleryViewer .toolbar .label .title {
+h2
+ {
 	font-family: 'Elsie', sans-serif, cursive;
 }
 
@@ -106,7 +106,7 @@ figcaption h1,
 
 
 
-a {
+a{
  display: block;
  margin: 5px auto;
 	-webkit-box-shadow: 0 10px 15px #777;
@@ -232,7 +232,7 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV CONTAINER)
 	
 }
 
-#myNanoGallery,
+
 .gallery {
 	max-width: 300px;
 	margin: 42px auto 20px;
@@ -242,15 +242,12 @@ STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV CONTAINER)
 }
 
 
-#myNanoGallery {
+/*#theLightGallery {
 	margin: 0 auto 20px;
-}
+}*/
 
 
-.replace_image {
-	width: 200px;
-	height: 200px;
-}
+
 
 /***************************
 NON NANO GALLERY DIV
@@ -265,7 +262,7 @@ NON NANO GALLERY DIV
 STYLES FOR NANOGALLERY PLUGIN
 ********************************************************************/
 	
-#myNanoGallery {
+#theLightGallery {
 	display: none;
 }
 
@@ -282,6 +279,10 @@ STYLES FOR NANOGALLERY PLUGIN
 	font-size: 1.3em;
 }
 
+
+.lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover {
+  border-color: #C66FF3;
+}
 .nanogallery_theme_default #nanoGalleryViewer .closeButtonFloating:after {
     
     padding: 5px 2px 5px 5px;
