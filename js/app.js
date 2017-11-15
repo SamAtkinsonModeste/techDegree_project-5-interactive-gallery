@@ -4,26 +4,36 @@
 
 //shows Search Box and Nano gallery when js is not disabled
 $("#search").fadeIn(1400);
-$("#theLightGallery").fadeIn(1800);
+$("#myLightGallery").fadeIn(1800);
 
-
-function contains(text_one, text_two) {
-	if(text_one.indexOf(text_two) != -1){
-		return true;
-	}
-}
-
-
+//function imgSearch() {
+//var input, filter, thumbNail, img;
+//input = document.getElementById('searchImgs');
+//filter = input.value.toLowerCase();
+//thumbNail = document.getElementByClassName('thumbNail');
+//
+//for (var i = 0; i < thumbNail.lenght; i++){
+//	
+//	img = thumbNail[i].getElementsByTagName('img')[0];
+//	if (img.alt.toLowerCase().indexOf(filter)> -1){
+//		thumbNail[i].style.display = "";
+//		console.log(filter);
+//	} else {
+//		thumbNail[i].style.display = "none";
+//	}
+//}
+//	
+//}
+//function contains(text_one, text_two) {
+//	if(text_one.indexOf(text_two) != -1){
+//		return true;
+//	}
+//}
+//
+//
 $("#searchImgs").keyup(function () {
 	var searchImgs = $("#searchImgs").val().toLowerCase();
-	$("a").text().each(function (){
-		if(!contains($(this).text().toLowerCase(), searchImgs)){
-		$(this).hide();
-		} else {
-		 $(this).show();
-	   }
-	});
-	
+    var thumbImg =$("img").attr();
 });
 
 /*console.log($("a[title]").text());*/
@@ -36,7 +46,7 @@ $("#searchImgs").keyup(function () {
 	//2. Get value of search input
 		var $searchVal =$(this).val().toLowerCase();
 		/*console.log($searchVal);*/
-	/*$("a[title='lake']").each( function(){
+	/*$("img[alt]']").each( function(){
 
 		var $imgTitle =$("a[title]").text();
 
@@ -59,7 +69,7 @@ $("#searchImgs").keyup(function () {
    		
 
 
-$("#theLightGallery").lightGallery({
+$("#lightGallery-container").lightGallery({
 	mode:'lg-slide-circular',
 	cssEasing: 'ease',
 	easing: 'linear',
