@@ -177,17 +177,17 @@ a{
 
 
 
-/*a 
+a 
 figcaption{
 	
    
 	width: 200px;
 	height: 200px;
 	
-}*/
+}
 
 
-/*
+
 figcaption {
 	position: relative;
 	margin: -197px auto 0;
@@ -205,8 +205,10 @@ figcaption {
 figcaption h1 {
 	font-size:1.5em; 
 }
-*/
 
+.hidden {
+	visibility: hidden;
+}
 
  .thumbNail:hover {
 	margin: 30px;
@@ -227,7 +229,7 @@ figcaption h1 {
 	 cursor: pointer;
 }
 
-/*
+
 a:hover figure  figcaption {
 	visibility: visible;
 	margin: -206px auto 0;
@@ -246,7 +248,7 @@ a:hover figure  figcaption {
 	 cursor: pointer;
 }
 
-*/
+
 
 
 
