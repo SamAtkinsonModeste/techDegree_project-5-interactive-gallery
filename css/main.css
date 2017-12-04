@@ -189,11 +189,11 @@ a:hover figure figcaption {
 	-o-transform: scale(1.0) rotate(360deg);
 	-ms-transform: scale(1.0) rotate(360deg);
 	transform: scale(1.0) rotate(360deg);
-	-webkit-transition: all.3s;
-	-moz-transition: all.3s;
-	-o-transition: all.3s;
-	-ms-transition: all.3s;
-	transition: all.3s;
+	-webkit-transition: all.4s;
+	-moz-transition: all.4s;
+	-o-transition: all.4s;
+	-ms-transition: all.4s;
+	transition: all.4s;
 	cursor: pointer;
 	overflow: hidden;
 }
@@ -245,6 +245,11 @@ STYLES FOR LIGHT GALLERY PLUGIN
 /* LIGHT GALLERY VIEWER H2*/
 .lg-sub-html h2 {
 	margin: 5px 0;
+}
+
+
+.lg-sub-html p {
+	margin: 10px;
 }
 /*******************************************************************
 MEDIA QUERIES
@@ -329,7 +334,7 @@ STYLES FOR LIGHTGALLERY PLUGIN
 	
 	
 	.lg-sub-html p {
-		font-size: 1em;
+		font-size: 1.3em;
 	}
 	
 	
