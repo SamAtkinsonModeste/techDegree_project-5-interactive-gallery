@@ -89,7 +89,7 @@ figcaption, p {
 	display: block;
 	margin: 0 auto;
 	padding: 10px;
-	border-style: none;
+	border:solid 2px #777;
 	border-radius: 8px;
 	-webkit-box-shadow: 0 10px 15px #777;
 	-moz-box-shadow: 0 10px 15px #777;
