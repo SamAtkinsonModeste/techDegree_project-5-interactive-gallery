@@ -16,7 +16,7 @@ $("#myLightGallery").fadeIn(1800);
 	 $(".thumbNail").each(function (){
 		 
 		 //if the a items doesn't contain the text phrase
-				 if ($(this).attr('title').search(new RegExp(filter, "i"))< 0){
+				 if ($(this).text().search(new RegExp(filter, "i"))< 0){
 			 $(this).fadeOut();
 					 
 					 //if the a items does contain the text phrase
