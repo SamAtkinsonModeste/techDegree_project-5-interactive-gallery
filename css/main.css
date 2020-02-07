@@ -55,10 +55,17 @@ img {
 
 .thumbNail, figcaption {
 	display: block;
-	margin: 20px auto;
+	margin: 30px auto;
 	max-width: 200px;
 	max-height: 200px;
 	padding: 5px;
+}
+
+
+.thumbNail:last-child {
+
+	margin-bottom: 100px;
+
 }
 /**********************************
         FONTS
@@ -165,7 +172,7 @@ figcaption h1 {
 
 
 .thumbNail:hover {
-	margin: 15px 50px;
+	margin: 15px auto;
 	box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 1), 0 0 0 4px rgba(0, 0, 0, 1);
 	border: 1px solid hsl(0, 0%, 20%);
 	outline: 2px solid #E9E9E9;
