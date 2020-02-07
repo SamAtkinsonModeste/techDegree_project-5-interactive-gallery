@@ -53,20 +53,65 @@ img {
 }
 
 
-.thumbNail, figcaption {
+.thumbNail,
+.thumbNail img,
+ figure,
+ figcaption {
 	display: block;
 	margin: 30px auto;
-	max-width: 200px;
-	max-height: 200px;
+	width: 200px;
+	height: 200px;
 	padding: 5px;
 }
 
 
+.thumbNail {
+	
+	width: 200px;
+	height: 200px;
+	padding: 5px;
+}
+
+
+
+
+figure {
+	position: relative;
+	bottom: 37px;
+	right:8px;
+	/* border: solid 2px #C66FF3; */
+}
 .thumbNail:last-child {
 
 	margin-bottom: 100px;
 
 }
+
+.thumbNail img,
+figcaption {
+	position: absolute;
+	width: 189px;
+	height: 190px;
+	top:-26px;
+	right: 5px;
+	
+}
+
+
+
+figcaption {
+	padding-bottom: 24px;
+	text-align: center;
+	font-size: 1em;
+	color: #FDFDFD;
+	background: rgba(000, 000, 000, .4);
+	border: 1px solid #000;
+	text-shadow: 1px 1px 0 #000;
+	
+}
+
+
+
 /**********************************
         FONTS
 ***********************************/
@@ -144,25 +189,12 @@ a {
 }
 
 
-a {
+/* a {
 	width: 200px;
 	height: 200px;
-}
+} */
 
 
-figcaption {
-	position: relative;
-	width: 189px;
-	height: 190px;
-	padding-bottom: 24px;
-	text-align: center;
-	font-size: 1em;
-	color: #FDFDFD;
-	background: rgba(000, 000, 000, .4);
-	border: 1px solid #000;
-	text-shadow: 1px 1px 0 #000;
-	visibility: hidden;
-}
 
 
 figcaption h1 {
@@ -171,7 +203,7 @@ figcaption h1 {
 }
 
 
-.thumbNail:hover {
+/* .thumbNail:hover {
 	margin: 15px auto;
 	box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 1), 0 0 0 4px rgba(0, 0, 0, 1);
 	border: 1px solid hsl(0, 0%, 20%);
@@ -187,10 +219,10 @@ figcaption h1 {
 	-ms-transition: all.3s;
 	transition: all.3s;
 	cursor: pointer;
-}
+} */
 
 
-a:hover figure figcaption {
+/* a:hover figure figcaption {
 	visibility: visible;
 	margin: -196px auto;
 	padding-bottom: 30px;
@@ -206,7 +238,7 @@ a:hover figure figcaption {
 	transition: all.4s;
 	cursor: pointer;
 	overflow: hidden;
-}
+} */
 
 /*******************************************************************
 STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV CONTAINER)
@@ -274,7 +306,7 @@ MEDIA QUERIES
 	
 	
 	.img-item, .thumbNail {
-		flex: 1 200px;
+		/* flex: 1 200px; */
 		margin: 10px 50px;
 		/*border: 1px solid #82AC83;*/
 	}
@@ -294,14 +326,14 @@ MEDIA QUERIES
 	
 	
 	.img-item, .thumbNail {
-		flex: 1 200px;
+		/* flex: 1 200px; */
 		margin: 10px 9px;
 		/*border: 1px solid #82AC83;*/
 	}
 	
 	
 	.thumbNail, .img-item {
-		flex: 1 22.2222%;
+		/* flex: 1 22.2222%; */
 	}
 	/*************************************************
 	BOTH NON LIGHTGALLERY AND LIGHTGALLERY STYLING
@@ -375,7 +407,7 @@ STYLES FOR LIGHTGALLERY PLUGIN
 	FLEX FOR NON LIGHTGALLERY
 **********************************/
 	.thumbNail, .img-item {
-		flex: 1 22.2222%;
+		/* flex: 1 22.2222%; */
 		margin: 20px 18px;
 	}
 	
