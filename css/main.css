@@ -20,6 +20,14 @@ body {
 img {
 	max-width: 100%;
 }
+
+
+a {
+	text-decoration: none;
+	margin: 10px auto;
+	/*border: 6px #000 solid;*/
+}
+
 /**********************************
         CONTAINERS
 ***********************************/
@@ -70,6 +78,17 @@ img {
 	width: 200px;
 	height: 200px;
 	padding: 5px;
+	-webkit-box-shadow: 0 10px 15px #777;
+	-moz-box-shadow: 0 10px 15px #777;
+	box-shadow: 0 10px 15px #777;
+	border: 3px solid #000;
+	-webkit-transition: all .3s ease .3s;
+	-moz-transition: all .3s ease .3s;
+	-o-transition:all .3s ease .3s;
+	-ms-transition: all .3s ease .3s;
+	transition: all .3s ease .3s;
+	cursor: pointer;
+	
 }
 
 
@@ -79,6 +98,8 @@ figure {
 	position: relative;
 	bottom: 37px;
 	right:8px;
+	/* overflow: hidden; */
+	perspective: 700px;
 	/* border: solid 2px #C66FF3; */
 }
 .thumbNail:last-child {
@@ -107,6 +128,10 @@ figcaption {
 	background: rgba(000, 000, 000, .4);
 	border: 1px solid #000;
 	text-shadow: 1px 1px 0 #000;
+	opacity:0;
+	transition: opacity .6s ease-in 0s, transform 1s ease-in-out .8s ; 
+	transform-origin: top left;
+	transform: rotateX(-270deg) rotateY(-90deg);
 	
 }
 
@@ -168,31 +193,13 @@ figcaption, p {
 }
 
 
-/*PSEUDO ELEMENTS*/
 
-.thumbNail {
-	-webkit-box-shadow: 0 10px 15px #777;
-	-moz-box-shadow: 0 10px 15px #777;
-	box-shadow: 0 10px 15px #777;
-	border: 3px solid #000;
-}
+
 
 .thumbNail img {
 	border: 2px solid #000;
 }
 
-
-a {
-	text-decoration: none;
-	margin: 10px auto;
-	/*border: 6px #000 solid;*/
-}
-
-
-/* a {
-	width: 200px;
-	height: 200px;
-} */
 
 
 
@@ -201,9 +208,12 @@ figcaption h1 {
 	font-size: 1.5em;
 	margin: 2px 0;
 }
+/****************************************************
+                    LINK   STATES
 
+*******************************************************/
 
-/* .thumbNail:hover {
+  .thumbNail:hover {
 	margin: 15px auto;
 	box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 1), 0 0 0 4px rgba(0, 0, 0, 1);
 	border: 1px solid hsl(0, 0%, 20%);
@@ -213,20 +223,17 @@ figcaption h1 {
 	-o-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	transform: scale(1.1);
-	-webkit-transition: all.3s;
-	-moz-transition: all.3s;
-	-o-transition: all.3s;
-	-ms-transition: all.3s;
-	transition: all.3s;
-	cursor: pointer;
-} */
+	
+}  
 
 
-/* a:hover figure figcaption {
-	visibility: visible;
-	margin: -196px auto;
+ .thumbNail:hover  figcaption {
+	opacity:1;
+	transform: rotate(0deg) rotateX(-270deg) rotateX(270deg);
+	/* transform: rotateX(-180deg) rotate(180deg); */
+	/* margin: -196px auto;
 	padding-bottom: 30px;
-	-webkit-transform: scale(1.0) rotate(360deg);
+	/* -webkit-transform: scale(1.0) rotate(360deg);
 	-moz-transform: scale(1.0) rotate(360deg);
 	-o-transform: scale(1.0) rotate(360deg);
 	-ms-transform: scale(1.0) rotate(360deg);
@@ -237,8 +244,8 @@ figcaption h1 {
 	-ms-transition: all.4s;
 	transition: all.4s;
 	cursor: pointer;
-	overflow: hidden;
-} */
+	overflow: hidden; */ 
+} 
 
 /*******************************************************************
 STYLES FOR HEADER AND GALLERY DIVS CLIP(MEANING IMAGE DIV CONTAINER)
