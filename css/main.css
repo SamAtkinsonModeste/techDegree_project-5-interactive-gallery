@@ -90,7 +90,6 @@ a {
 
 .thumbNail,
 .thumbNail img,
- .j-figCap,
  .figCap-default {
 	display: block;
 	margin: 30px auto;
@@ -139,6 +138,7 @@ figure {
 }
 
 .thumbNail img,
+j-figCap,
 .figCap-default,
 figcaption {
 	position: absolute;
