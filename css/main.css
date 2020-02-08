@@ -90,7 +90,7 @@ a {
 
 .thumbNail,
 .thumbNail img,
- figure,
+ .j-figCap,
  .figCap-default {
 	display: block;
 	margin: 30px auto;
