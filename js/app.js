@@ -5,7 +5,7 @@
 //shows Search Box and Nano gallery when js is not disabled
 $("#search").fadeIn(1400);
 $("#myLightGallery").fadeIn(1800);
-$("figcaption").addClass("j-figCap").fadeIn(1200).fadeOut(3000);
+
 
 
 
