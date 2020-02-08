@@ -1,16 +1,16 @@
-/*! lightgallery - v1.6.4 - 2017-10-29
+/*! lightgallery - v1.6.12 - 2019-02-19
 * http://sachinchoolur.github.io/lightGallery/
-* Copyright (c) 2017 Sachin N; Licensed GPLv3 */
-/*! lightgallery - v1.6.4 - 2017-10-29
+* Copyright (c) 2019 Sachin N; Licensed GPLv3 */
+/*! lightgallery - v1.6.12 - 2019-02-19
 * http://sachinchoolur.github.io/lightGallery/
-* Copyright (c) 2017 Sachin N; Licensed GPLv3 */
+* Copyright (c) 2019 Sachin N; Licensed GPLv3 */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
     define(['jquery'], function (a0) {
       return (factory(a0));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
@@ -447,7 +447,7 @@
             }
         }
 
-        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
+        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com|be-nocookie\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
         var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
         var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
         var vk = src.match(/\/\/(?:www\.)?(?:vk\.com|vkontakte\.ru)\/(?:video_ext\.php\?)(.*)/i);
@@ -1155,28 +1155,21 @@
         var isMoved = false;
         if (_this.s.enableDrag && _this.doCss()) {
             _this.$slide.on('mousedown.lg', function(e) {
-                // execute only on .lg-object
-                if (!_this.$outer.hasClass('lg-zoomed')) {
-                    if ($(e.target).hasClass('lg-object') || $(e.target).hasClass('lg-video-play')) {
-                        e.preventDefault();
+                if (!_this.$outer.hasClass('lg-zoomed') && !_this.lgBusy && !$(e.target).text().trim()) {
+                    e.preventDefault();
+                    _this.manageSwipeClass();
+                    startCoords = e.pageX;
+                    isDraging = true;
 
-                        if (!_this.lgBusy) {
-                            _this.manageSwipeClass();
-                            startCoords = e.pageX;
-                            isDraging = true;
+                    // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
+                    _this.$outer.scrollLeft += 1;
+                    _this.$outer.scrollLeft -= 1;
 
-                            // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                            _this.$outer.scrollLeft += 1;
-                            _this.$outer.scrollLeft -= 1;
+                    // *
 
-                            // *
+                    _this.$outer.removeClass('lg-grab').addClass('lg-grabbing');
 
-                            _this.$outer.removeClass('lg-grab').addClass('lg-grabbing');
-
-                            _this.$el.trigger('onDragstart.lg');
-                        }
-
-                    }
+                    _this.$el.trigger('onDragstart.lg');
                 }
             });
 
@@ -1266,6 +1259,10 @@
                     mousedown = false;
                 }
 
+            });
+            
+            _this.$outer.on('mousemove.lg', function() {
+                mousedown = false;
             });
 
             _this.$outer.on('mouseup.lg', function(e) {
@@ -1573,9 +1570,9 @@
 
 }));
 
-/*! lg-fullscreen - v1.0.1 - 2016-09-30
+/*! lg-fullscreen - v1.1.0 - 2019-02-19
 * http://sachinchoolur.github.io/lightGallery
-* Copyright (c) 2016 Sachin N; Licensed GPLv3 */
+* Copyright (c) 2019 Sachin N; Licensed GPLv3 */
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -1583,13 +1580,13 @@
     define(['jquery'], function (a0) {
       return (factory(a0));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(require('jquery'));
   } else {
-    factory(jQuery);
+    factory(root["jQuery"]);
   }
 }(this, function ($) {
 
@@ -1600,6 +1597,15 @@
     var defaults = {
         fullScreen: true
     };
+
+    function isFullScreen() {
+        return (
+            document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement
+        );
+    }
 
     var Fullscreen = function(element) {
 
@@ -1666,11 +1672,10 @@
         });
 
         this.core.$outer.find('.lg-fullscreen').on('click.lg', function() {
-            if (!document.fullscreenElement &&
-                !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-                _this.requestFullscreen();
-            } else {
+            if (isFullScreen()) {
                 _this.exitFullscreen();
+            } else {
+                _this.requestFullscreen();
             }
         });
 
@@ -1679,7 +1684,9 @@
     Fullscreen.prototype.destroy = function() {
 
         // exit from fullscreen if activated
-        this.exitFullscreen();
+        if(isFullScreen()) {
+            this.exitFullscreen();
+        }
 
         $(document).off('fullscreenchange.lg webkitfullscreenchange.lg mozfullscreenchange.lg MSFullscreenChange.lg');
     };
@@ -2275,9 +2282,9 @@
 
 }));
 
-/*! lg-video - v1.1.0 - 2017-08-08
+/*! lg-video - v1.2.2 - 2018-05-01
 * http://sachinchoolur.github.io/lightGallery
-* Copyright (c) 2017 Sachin N; Licensed GPLv3 */
+* Copyright (c) 2018 Sachin N; Licensed GPLv3 */
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -2285,78 +2292,154 @@
     define(['jquery'], function (a0) {
       return (factory(a0));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(require('jquery'));
   } else {
-    factory(jQuery);
+    factory(root["jQuery"]);
   }
 }(this, function ($) {
 
 (function() {
+    
+        'use strict';
+    
+        var defaults = {
+            videoMaxWidth: '855px',
 
-    'use strict';
+            autoplayFirstVideo: true,
 
-    var defaults = {
-        videoMaxWidth: '855px',
-        youtubePlayerParams: false,
-        vimeoPlayerParams: false,
-        dailymotionPlayerParams: false,
-        vkPlayerParams: false,
-        videojs: false,
-        videojsOptions: {}
-    };
+            youtubePlayerParams: false,
+            vimeoPlayerParams: false,
+            dailymotionPlayerParams: false,
+            vkPlayerParams: false,
 
-    var Video = function(element) {
-
-        this.core = $(element).data('lightGallery');
-
-        this.$el = $(element);
-        this.core.s = $.extend({}, defaults, this.core.s);
-        this.videoLoaded = false;
-
-        this.init();
-
-        return this;
-    };
-
-    Video.prototype.init = function() {
-        var _this = this;
-
-        // Event triggered when video url found without poster
-        _this.core.$el.on('hasVideo.lg.tm', function(event, index, src, html) {
-            _this.core.$slide.eq(index).find('.lg-video').append(_this.loadVideo(src, 'lg-object', true, index, html));
-            if (html) {
-                if (_this.core.s.videojs) {
-                    try {
-                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
-                            if (!_this.videoLoaded) {
-                                this.play();
-                            }
-                        });
-                    } catch (e) {
-                        console.error('Make sure you have included videojs');
+            videojs: false,
+            videojsOptions: {}
+        };
+    
+        var Video = function(element) {
+    
+            this.core = $(element).data('lightGallery');
+    
+            this.$el = $(element);
+            this.core.s = $.extend({}, defaults, this.core.s);
+            this.videoLoaded = false;
+    
+            this.init();
+    
+            return this;
+        };
+    
+        Video.prototype.init = function() {
+            var _this = this;
+    
+            // Event triggered when video url found without poster
+            _this.core.$el.on('hasVideo.lg.tm', onHasVideo.bind(this));
+    
+            // Set max width for video
+            _this.core.$el.on('onAferAppendSlide.lg.tm', onAferAppendSlide.bind(this));
+    
+            if (_this.core.doCss() && (_this.core.$items.length > 1) && (_this.core.s.enableSwipe || _this.core.s.enableDrag)) {
+                _this.core.$el.on('onSlideClick.lg.tm', function() {
+                    var $el = _this.core.$slide.eq(_this.core.index);
+                    _this.loadVideoOnclick($el);
+                });
+            } else {
+    
+                // For IE 9 and bellow
+                _this.core.$slide.on('click.lg', function() {
+                    _this.loadVideoOnclick($(this));
+                });
+            }
+    
+            _this.core.$el.on('onBeforeSlide.lg.tm', onBeforeSlide.bind(this));
+    
+            _this.core.$el.on('onAfterSlide.lg.tm', function(event, prevIndex) {
+                _this.core.$slide.eq(prevIndex).removeClass('lg-video-playing');
+            });
+            
+            if (_this.core.s.autoplayFirstVideo) {
+                _this.core.$el.on('onAferAppendSlide.lg.tm', function (e, index) {
+                    if (!_this.core.lGalleryOn) {
+                        var $el = _this.core.$slide.eq(index);
+                        setTimeout(function () {
+                            _this.loadVideoOnclick($el);
+                        }, 100);
                     }
+                });
+            }
+        };
+    
+        Video.prototype.loadVideo = function(src, addClass, noPoster, index, html) {
+            var video = '';
+            var autoplay = 1;
+            var a = '';
+            var isVideo = this.core.isVideo(src, index) || {};
+    
+            // Enable autoplay based on setting for first video if poster doesn't exist
+            if (noPoster) {
+                if (this.videoLoaded) {
+                    autoplay = 0;
                 } else {
-                    if(!_this.videoLoaded) {
-                        _this.core.$slide.eq(index).find('.lg-html5').get(0).play();
-                    }
+                    autoplay = this.core.s.autoplayFirstVideo ? 1 : 0;
                 }
             }
-        });
-
-        // Set max width for video
-        _this.core.$el.on('onAferAppendSlide.lg.tm', function(event, index) {
-            var $videoCont = _this.core.$slide.eq(index).find('.lg-video-cont');
-            if (!$videoCont.hasClass('lg-has-iframe')) {
-                $videoCont.css('max-width', _this.core.s.videoMaxWidth);
-                _this.videoLoaded = true;
+    
+            if (isVideo.youtube) {
+    
+                a = '?wmode=opaque&autoplay=' + autoplay + '&enablejsapi=1';
+                if (this.core.s.youtubePlayerParams) {
+                    a = a + '&' + $.param(this.core.s.youtubePlayerParams);
+                }
+    
+                video = '<iframe class="lg-video-object lg-youtube ' + addClass + '" width="560" height="315" src="//www.youtube.com/embed/' + isVideo.youtube[1] + a + '" frameborder="0" allowfullscreen></iframe>';
+    
+            } else if (isVideo.vimeo) {
+    
+                a = '?autoplay=' + autoplay + '&api=1';
+                if (this.core.s.vimeoPlayerParams) {
+                    a = a + '&' + $.param(this.core.s.vimeoPlayerParams);
+                }
+    
+                video = '<iframe class="lg-video-object lg-vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+    
+            } else if (isVideo.dailymotion) {
+    
+                a = '?wmode=opaque&autoplay=' + autoplay + '&api=postMessage';
+                if (this.core.s.dailymotionPlayerParams) {
+                    a = a + '&' + $.param(this.core.s.dailymotionPlayerParams);
+                }
+    
+                video = '<iframe class="lg-video-object lg-dailymotion ' + addClass + '" width="560" height="315" src="//www.dailymotion.com/embed/video/' + isVideo.dailymotion[1] + a + '" frameborder="0" allowfullscreen></iframe>';
+    
+            } else if (isVideo.html5) {
+                var fL = html.substring(0, 1);
+                if (fL === '.' || fL === '#') {
+                    html = $(html).html();
+                }
+    
+                video = html;
+    
+            } else if (isVideo.vk) {
+    
+                a = '&autoplay=' + autoplay;
+                if (this.core.s.vkPlayerParams) {
+                    a = a + '&' + $.param(this.core.s.vkPlayerParams);
+                }
+    
+                video = '<iframe class="lg-video-object lg-vk ' + addClass + '" width="560" height="315" src="//vk.com/video_ext.php?' + isVideo.vk[1] + a + '" frameborder="0" allowfullscreen></iframe>';
+    
             }
-        });
+    
+            return video;
+        };
 
-        var loadOnClick = function($el) {
+        Video.prototype.loadVideoOnclick = function($el){
+
+            var _this = this;
             // check slide has poster
             if ($el.find('.lg-object').hasClass('lg-has-poster') && $el.find('.lg-object').is(':visible')) {
 
@@ -2449,21 +2532,46 @@
                 }
             }
         };
+    
+        Video.prototype.destroy = function() {
+            this.videoLoaded = false;
+        };
 
-        if (_this.core.doCss() && (_this.core.$items.length > 1) && (_this.core.s.enableSwipe || _this.core.s.enableDrag)) {
-            _this.core.$el.on('onSlideClick.lg.tm', function() {
-                var $el = _this.core.$slide.eq(_this.core.index);
-                loadOnClick($el);
-            });
-        } else {
-
-            // For IE 9 and bellow
-            _this.core.$slide.on('click.lg', function() {
-                loadOnClick($(this));
-            });
+        function onHasVideo(event, index, src, html) {
+            /*jshint validthis:true */
+            var _this = this;
+            _this.core.$slide.eq(index).find('.lg-video').append(_this.loadVideo(src, 'lg-object', true, index, html));
+            if (html) {
+                if (_this.core.s.videojs) {
+                    try {
+                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
+                            if (!_this.videoLoaded && _this.core.s.autoplayFirstVideo) {
+                                this.play();
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Make sure you have included videojs');
+                    }
+                } else {
+                    if(!_this.videoLoaded && _this.core.s.autoplayFirstVideo) {
+                        _this.core.$slide.eq(index).find('.lg-html5').get(0).play();
+                    }
+                }
+            }
         }
 
-        _this.core.$el.on('onBeforeSlide.lg.tm', function(event, prevIndex, index) {
+        function onAferAppendSlide(event, index) {
+            /*jshint validthis:true */
+            var $videoCont = this.core.$slide.eq(index).find('.lg-video-cont');
+            if (!$videoCont.hasClass('lg-has-iframe')) {
+                $videoCont.css('max-width', this.core.s.videoMaxWidth);
+                this.videoLoaded = true;
+            }
+        }
+
+        function onBeforeSlide(event, prevIndex, index) {
+            /*jshint validthis:true */
+            var _this = this;
 
             var $videoSlide = _this.core.$slide.eq(prevIndex);
             var youtubePlayer = $videoSlide.find('.lg-youtube').get(0);
@@ -2509,87 +2617,11 @@
                 _this.core.$outer.addClass('lg-hide-download');
             }
 
-            //$videoSlide.addClass('lg-complete');
-
-        });
-
-        _this.core.$el.on('onAfterSlide.lg.tm', function(event, prevIndex) {
-            _this.core.$slide.eq(prevIndex).removeClass('lg-video-playing');
-        });
-    };
-
-    Video.prototype.loadVideo = function(src, addClass, noposter, index, html) {
-        var video = '';
-        var autoplay = 1;
-        var a = '';
-        var isVideo = this.core.isVideo(src, index) || {};
-
-        // Enable autoplay for first video if poster doesn't exist
-        if (noposter) {
-            if (this.videoLoaded) {
-                autoplay = 0;
-            } else {
-                autoplay = 1;
-            }
         }
-
-        if (isVideo.youtube) {
-
-            a = '?wmode=opaque&autoplay=' + autoplay + '&enablejsapi=1';
-            if (this.core.s.youtubePlayerParams) {
-                a = a + '&' + $.param(this.core.s.youtubePlayerParams);
-            }
-
-            video = '<iframe class="lg-video-object lg-youtube ' + addClass + '" width="560" height="315" src="//www.youtube.com/embed/' + isVideo.youtube[1] + a + '" frameborder="0" allowfullscreen></iframe>';
-
-        } else if (isVideo.vimeo) {
-
-            a = '?autoplay=' + autoplay + '&api=1';
-            if (this.core.s.vimeoPlayerParams) {
-                a = a + '&' + $.param(this.core.s.vimeoPlayerParams);
-            }
-
-            video = '<iframe class="lg-video-object lg-vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
-
-        } else if (isVideo.dailymotion) {
-
-            a = '?wmode=opaque&autoplay=' + autoplay + '&api=postMessage';
-            if (this.core.s.dailymotionPlayerParams) {
-                a = a + '&' + $.param(this.core.s.dailymotionPlayerParams);
-            }
-
-            video = '<iframe class="lg-video-object lg-dailymotion ' + addClass + '" width="560" height="315" src="//www.dailymotion.com/embed/video/' + isVideo.dailymotion[1] + a + '" frameborder="0" allowfullscreen></iframe>';
-
-        } else if (isVideo.html5) {
-            var fL = html.substring(0, 1);
-            if (fL === '.' || fL === '#') {
-                html = $(html).html();
-            }
-
-            video = html;
-
-        } else if (isVideo.vk) {
-
-            a = '&autoplay=' + autoplay;
-            if (this.core.s.vkPlayerParams) {
-                a = a + '&' + $.param(this.core.s.vkPlayerParams);
-            }
-
-            video = '<iframe class="lg-video-object lg-vk ' + addClass + '" width="560" height="315" src="http://vk.com/video_ext.php?' + isVideo.vk[1] + a + '" frameborder="0" allowfullscreen></iframe>';
-
-        }
-
-        return video;
-    };
-
-    Video.prototype.destroy = function() {
-        this.videoLoaded = false;
-    };
-
-    $.fn.lightGallery.modules.video = Video;
-
-})();
-
+    
+        $.fn.lightGallery.modules.video = Video;
+    
+    })();
 
 }));
 
@@ -3121,7 +3153,7 @@
 
 }));
 
-/*! lg-hash - v1.0.3 - 2017-10-19
+/*! lg-hash - v1.0.4 - 2017-12-20
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
 
@@ -3170,7 +3202,7 @@
         // Change hash value on after each slide transition
         _this.core.$el.on('onAfterSlide.lg.tm', function(event, prevIndex, index) {
             if (history.replaceState) {
-                history.replaceState(null, null, window.location.pathname + '#lg=' + _this.core.s.galleryId + '&slide=' + index);
+                history.replaceState(null, null, window.location.pathname + window.location.search + '#lg=' + _this.core.s.galleryId + '&slide=' + index);
             } else {
                 window.location.hash = 'lg=' + _this.core.s.galleryId + '&slide=' + index;
             }

@@ -425,7 +425,7 @@
             }
         }
 
-        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
+        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com|be-nocookie\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
         var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
         var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
         var vk = src.match(/\/\/(?:www\.)?(?:vk\.com|vkontakte\.ru)\/(?:video_ext\.php\?)(.*)/i);
@@ -1133,28 +1133,21 @@
         var isMoved = false;
         if (_this.s.enableDrag && _this.doCss()) {
             _this.$slide.on('mousedown.lg', function(e) {
-                // execute only on .lg-object
-                if (!_this.$outer.hasClass('lg-zoomed')) {
-                    if ($(e.target).hasClass('lg-object') || $(e.target).hasClass('lg-video-play')) {
-                        e.preventDefault();
+                if (!_this.$outer.hasClass('lg-zoomed') && !_this.lgBusy && !$(e.target).text().trim()) {
+                    e.preventDefault();
+                    _this.manageSwipeClass();
+                    startCoords = e.pageX;
+                    isDraging = true;
 
-                        if (!_this.lgBusy) {
-                            _this.manageSwipeClass();
-                            startCoords = e.pageX;
-                            isDraging = true;
+                    // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
+                    _this.$outer.scrollLeft += 1;
+                    _this.$outer.scrollLeft -= 1;
 
-                            // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                            _this.$outer.scrollLeft += 1;
-                            _this.$outer.scrollLeft -= 1;
+                    // *
 
-                            // *
+                    _this.$outer.removeClass('lg-grab').addClass('lg-grabbing');
 
-                            _this.$outer.removeClass('lg-grab').addClass('lg-grabbing');
-
-                            _this.$el.trigger('onDragstart.lg');
-                        }
-
-                    }
+                    _this.$el.trigger('onDragstart.lg');
                 }
             });
 
@@ -1244,6 +1237,10 @@
                     mousedown = false;
                 }
 
+            });
+            
+            _this.$outer.on('mousemove.lg', function() {
+                mousedown = false;
             });
 
             _this.$outer.on('mouseup.lg', function(e) {
