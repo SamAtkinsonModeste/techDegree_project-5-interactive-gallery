@@ -89,12 +89,15 @@ a {
 /*IMAGES FIGURE FIGCAPTION*/
 
 .thumbNail,
-.thumbNail img,
- .figCap-default {
-	display: block;
+ figure img {
+  display: block;	
+	
+}
+
+.thumbNail {
 	margin: 30px auto;
-	width: 200px;
-	height: 200px;
+	width: 220px;
+	height: 220px;
 	padding: 5px;
 	border-radius: 0.650em;
 }
@@ -102,7 +105,6 @@ a {
 
 .thumbNail {
 	
-
 	-webkit-box-shadow: 0 10px 15px #777;
 	-moz-box-shadow: 0 10px 15px #777;
 	box-shadow: 0 10px 15px #777;
@@ -117,42 +119,49 @@ a {
 }
 
 
-
-
-
-
-
-figure {
-	position: relative;
-	bottom: 8px;
-	left: 5px;
-	perspective: 700px;
-	/* border: solid 2px #C66FF3; */
-}
-
 .thumbNail:last-child {
 
 	margin-bottom: 100px;
 
 }
 
-.thumbNail img,
-.figCap-default{
-	position: absolute;
-	width: 189px;
-	height: 190px;
-	top:-26px;
-	right: 5px;
-	
+.thumbNail,
+ figure,
+ figure img,
+ .figCap-default {
+	border-radius: 0.650em;
+
+ }
+
+
+
+
+figure {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	top: 2px;
+	left: 2px;
+	padding: 0.350em;
+	box-shadow:         inset 0 0 6px rgba(23, 5, 64, .9);
+	border: 3px solid rgba(000, 000, 000, .8);
+	perspective: 700px;
+
+	/* border: solid 2px #C66FF3; */
 }
 
-.thumbNail img {
-	border: 2px solid #000;
-}
+
+
+
 
 
 
 .figCap-default {
+	position: absolute;
+	width: 195px;
+	height: 195px;
+	top:0;
+	right:0;
 	padding-bottom: 24px;
 	text-align: center;
 	font-size: 1em;
@@ -170,16 +179,12 @@ figure {
 
 /* CLASS FOR EFFECT FOR JQUERY  */
 
-.j-figCap {
-    display: block;
-	margin: 30px auto;
-	padding: 5px;
-	border-radius: 0.650em;
-    position: absolute;
-	width: 189px;
-	height: 190px;
-	top:-26px;
-	right: 5px;
+.j-figCap{
+	position: absolute;
+	width: 195px;
+	height: 195px;
+	top:0;
+	right:0;
 	padding-bottom: 24px;
 	text-align: center;
 	font-size: 1em;
@@ -187,10 +192,9 @@ figure {
 	background: rgba(000, 000, 000, .4);
 	border: 1px solid #000;
 	text-shadow: 1px 1px 0 #000;
-
-
-
+	
 }
+
 
 
 
