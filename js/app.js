@@ -6,6 +6,9 @@
 $("#search").fadeIn(1400);
 $("#myLightGallery").fadeIn(1800);
 
+//Show figcaption over thumbnails
+
+$(".j-figCap").fadeIn(3000).fadeOut(3000);
 
 
 
@@ -15,11 +18,11 @@ $("#myLightGallery").fadeIn(1800);
 	 
 	 $(".thumbNail").each(function (){
 		 
-		 //if the a items doesn't contain the text phrase
+		 //if the items doesn't contain the text phrase
 				 if ($(this).text().search(new RegExp(filter, "i"))< 0){
 			 $(this).fadeOut();
 					 
-					 //if the a items does contain the text phrase
+					 //if the items does contain the text phrase
 		 } else {
 			 $(this).show();
 		 }
