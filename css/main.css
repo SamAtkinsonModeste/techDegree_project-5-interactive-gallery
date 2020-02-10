@@ -454,9 +454,16 @@ STYLES FOR LIGHTGALLERY PLUGIN
 	.thumbNail,
 	 .img-item {
 		margin: 20px 18px;
+		width: 200px;
+		height: 200px;
 	}
 	
-	
+	figure,
+	.figCap-default,
+	.j-figCap {
+		width: 180px;
+		height: 180px;
+	}
 	.main-header h1 {
 		font-size: 3em;
 		padding: 10px 0 25px;
