@@ -128,7 +128,8 @@ a {
 .thumbNail,
  figure,
  figure img,
- .figCap-default {
+ .figCap-default,
+ .j-figCap {
 	border-radius: 0.650em;
 
  }
@@ -192,6 +193,8 @@ figure {
 	background: rgba(000, 000, 000, .4);
 	border: 1px solid #000;
 	text-shadow: 1px 1px 0 #000;
+	transform-origin: top center;
+	
 	
 }
 
@@ -249,13 +252,22 @@ transform: rotate(0deg) rotateX(-270deg) rotateX(270deg);
 
 /*FONT FOR THE IMAGE CAPTIONS*/
 
-.figCap-default, p {
+.figCap-default,
+.j-figCap,
+ p {
 	font-family: 'Arima Madurai', sans-serif, cursive;
 }
 
 
-#searchImgs, .figCap-default h1, h2 {
+#searchImgs,
+ .figCap-default h1,
+ .j-figCap h1,
+  h2 {
 	font-family: 'Elsie', sans-serif, cursive;
+}
+
+.j-figCap h1 {
+  font-size: 1.6em;
 }
 
 
