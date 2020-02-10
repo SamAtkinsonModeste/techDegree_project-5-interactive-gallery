@@ -7,6 +7,8 @@ $("#search").fadeIn(1400);
 $("#myLightGallery").fadeIn(1800);
 
 //Show figcaption over thumbnails
+$( ".figCap-default").hide().show(6000);
+
 
 $(".j-figCap").fadeIn(3000).fadeOut(3000);
 
