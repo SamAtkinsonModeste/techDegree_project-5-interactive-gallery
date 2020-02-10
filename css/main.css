@@ -181,6 +181,7 @@ figure {
 /* CLASS FOR EFFECT FOR JQUERY  */
 
 .j-figCap{
+	display:none;
 	position: absolute;
 	width: 195px;
 	height: 195px;
@@ -193,7 +194,7 @@ figure {
 	background: rgba(000, 000, 000, .4);
 	border: 1px solid #000;
 	text-shadow: 1px 1px 0 #000;
-	transform-origin: top center;
+	
 	
 	
 }
