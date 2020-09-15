@@ -457,7 +457,7 @@ STYLES FOR LIGHTGALLERY PLUGIN
 		margin: 20px;
 		width: 200px;
 		height: 200px;
-		border: solid purple 1px;
+		/* border: solid purple 1px; */
 	}
 	
 	figure,
