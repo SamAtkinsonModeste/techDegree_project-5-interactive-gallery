@@ -6,11 +6,14 @@
 $("#search").fadeIn(1400);
 $("#myLightGallery").fadeIn(1800);
 
-//Show figcaption over thumbnails
-$( ".figCap-default").hide().show(6000);
+//Shows all figcaptions onload
+$(".j-figCap").fadeIn(1000).fadeOut(1500);
+
+//Delays showing figcaption over thumbnails on hover
+$( ".figCap-default").hide().show(2500);
 
 
-$(".j-figCap").fadeIn(3000).fadeOut(3000);
+
 
 
 
