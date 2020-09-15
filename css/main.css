@@ -82,8 +82,8 @@ a {
 /*Why did I add this max width?*/
 #myLightGallery {
 	max-width: 1150px;
-	border: red solid 3px;
-	
+	/* border: red solid 3px;
+	 */
 }
 
 
@@ -386,7 +386,7 @@ MEDIA QUERIES
 		
 	.img-item,
 	 .thumbNail {
-		margin: 10px 8px;
+		margin: 15px 8px;
 		/*border: 1px solid #82AC83;*/
 	}
 	
@@ -418,9 +418,9 @@ MEDIA QUERIES
 	}
 	
 	
-	.thumbNail:hover {
+	/* .thumbNail:hover {
 		margin: 10px 8px;
-	}
+	} */
 	/*******************************************************************
 STYLES FOR LIGHTGALLERY PLUGIN
 ********************************************************************/
@@ -456,7 +456,7 @@ STYLES FOR LIGHTGALLERY PLUGIN
 **********************************/
 	.thumbNail,
 	 .img-item {
-		margin: 20px;
+		margin: 20px 20px;
 		width: 200px;
 		height: 200px;
 		/* border: solid purple 1px; */
@@ -474,9 +474,9 @@ STYLES FOR LIGHTGALLERY PLUGIN
 	}
 	
 	
-	.thumbNail:hover {
+	/* .thumbNail:hover {
 		margin: 20px 18px;
-	}
+	} */
 	
 	
 	/*SEARCH BOX  */
